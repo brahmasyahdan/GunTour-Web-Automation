@@ -55,5 +55,6 @@ public class LoginStepDef {
         loginPage.InputEmail("nyusdjaja30@gmail.com");
         loginPage.InputPassword("Araa1989");
         loginPage.ClickLoginButton();
+        homePageUser.clickPopUpLoginSuccess();
     }
 }

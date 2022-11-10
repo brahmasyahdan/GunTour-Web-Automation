@@ -49,10 +49,10 @@ public class AddProductStep {
         adminProductPage.inputWarning(warning);
     }
 
-    @And("click save data button modal")
-    public void clickSaveDataButtonModal() {
-        adminProductPage.clickSaveDataButton();
-    }
+//    @And("click save data button modal")
+//    public void clickSaveDataButtonModal() {
+//        adminProductPage.clickSaveDataButton();
+//    }
 
     @Then("the product should be added to table")
     public void theProductShouldBeAddedToTable() {

@@ -61,10 +61,10 @@ public class UpdateProductStep {
         adminProductPage.getTableTitle();
     }
 
-    @Then("alert message should appear {string}")
-    public void alertMessageShouldAppear(String alert) {
-        assertEquals(alert, adminProductPage.getAlertProductPopup());
-        adminProductPage.clickOk();
+//    @Then("alert message should appear {string}")
+//    public void alertMessageShouldAppear(String alert) {
+//        assertEquals(alert, adminProductPage.getAlertProductPopup());
+//        adminProductPage.clickOk();
 
-    }
+//    }
 }

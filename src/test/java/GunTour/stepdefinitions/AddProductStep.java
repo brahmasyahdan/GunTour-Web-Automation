@@ -51,10 +51,10 @@ public class AddProductStep {
         adminProductPage.inputWarning(warning);
     }
 
-    @And("click save data button modal")
-    public void clickSaveDataButtonModal() {
-        adminProductPage.clickSaveDataButton();
-    }
+//    @And("click save data button modal")
+//    public void clickSaveDataButtonModal() {
+//        adminProductPage.clickSaveDataButton();
+//    }
 
     @Then("the product should be added to table")
     public void theProductShouldBeAddedToTable() {
@@ -78,10 +78,4 @@ public class AddProductStep {
     public void productsTableAppear() {
         assertEquals("PRICE", adminProductPage.getTableTitle());
     }
-
-//    @And("send productID to dynamic variable")
-//    public String sendProductIDToDynamicVariable() {
-//        return globalEnv.productID =
-//                SerenityRest.then().extract().path("data.id_product");
-//    }
 }

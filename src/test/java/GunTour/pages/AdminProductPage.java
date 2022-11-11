@@ -3,10 +3,9 @@ package GunTour.pages;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.lang.Thread.sleep;
 
@@ -19,8 +18,8 @@ public class AdminProductPage extends PageObject {
     public static final String DIR = System.getProperty("user.dir");
     public static String IMAGE_FOLDER = DIR+"/src/test/resources/images";
     By clickOk = By.xpath("/html/body/div[2]/div/div[6]/button[1]");
-
-    //    private final By productButton = By.xpath("//*[@id=\"root\"]/div/aside/div/div[2]/ul/li[1]/a");
+    By productMenuButton = By.id("product-sidebar");
+    By usersMenuButton = By.id("users-sidebar");
     By tableTitle = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/table/thead/tr/th[3]");
     By addProductButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/label");
     By closeButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/label/div");
@@ -32,6 +31,7 @@ public class AdminProductPage extends PageObject {
     By saveDataModal = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[8]");
     By alertAddProductPopup = By.id("swal2-title");
     By editProductButton = By.id("button-edit-1");
+    By deleteProductButton = By.id("109");
 
     public void wait(int wait) {
         try {
@@ -42,6 +42,14 @@ public class AdminProductPage extends PageObject {
     }
     public String getUrl(){
         return driver.getCurrentUrl();
+    }
+
+    public void clickProductMenu(){
+        driver.findElement(productMenuButton);
+    }
+    public void clickUsersMenu() {
+        driver.findElement(usersMenuButton).click();
+        wait(2000);
     }
     public void clickOk(){
         driver.findElement(clickOk).click();
@@ -58,12 +66,18 @@ public class AdminProductPage extends PageObject {
 //        driver.findElement(productButton).click();
 //    }
     public void scrollToCloseButton() {
-        driver.findElement(By.id("my-modal-3")).sendKeys(Keys.CONTROL, Keys.END);
-        wait(1000);
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("window.scrollBy(0,350)", "");
-////        Actions act = new Actions(driver);
-////        act.sendKeys(Keys.PAGE_DOWN).build().perform();
+//        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div"));
+//// Select last child of content div
+//        WebElement element = driver.findElement();
+//// Scroll to last child node
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+//        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div")).sendKeys(Keys.CONTROL, Keys.END);
+//        wait(1000);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,1000)");
+        wait(3000);
+//        Actions act = new Actions(driver);
+//        act.sendKeys(Keys.PAGE_DOWN).build().perform();
     }
     public void clickCloseButton(){
         driver.findElement(closeButton).click();
@@ -102,10 +116,15 @@ public class AdminProductPage extends PageObject {
 
     public void clickEditProductButton() {
         driver.findElement(editProductButton).click();
+        wait(1000);
     }
     public void inputEditProductPhoto(){
         WebElement element= getDriver().switchTo().activeElement().findElement(productPhotoElement);
         element.sendKeys(IMAGE_FOLDER+"/Tenda Update.jpeg");
+        wait(1000);
+    }
+    public void clickDeleteButton() {
+        driver.findElement(deleteProductButton).click();
         wait(1000);
     }
 

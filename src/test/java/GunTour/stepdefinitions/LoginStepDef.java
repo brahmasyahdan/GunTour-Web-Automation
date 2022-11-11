@@ -7,12 +7,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 
 public class LoginStepDef {
 
     AdminProductPage adminProductPage;
     LoginPage loginPage;
+    public void wait(int wait) {
+        try {
+            sleep(wait);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Given("already on login page")
     public void AlreadyOnLoginPage(){
         loginPage.open();

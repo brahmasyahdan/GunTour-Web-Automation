@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -15,8 +16,8 @@ public class LoginStepDef {
 
     LoginPage loginPage;
     HomePageUser homePageUser;
-
     AdminProductPage adminProductPage;
+
     @Given("I already on log in page")
     public void iAlreadyOnLoginPage(){
         loginPage.open();
@@ -56,5 +57,12 @@ public class LoginStepDef {
         loginPage.InputPassword("Araa1989");
         loginPage.ClickLoginButton();
         homePageUser.clickPopUpLoginSuccess();
+    }
+      public void wait(int wait) {
+        try {
+            sleep(wait);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

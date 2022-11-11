@@ -1,6 +1,7 @@
 package GunTour.stepdefinitions;
 
 import GunTour.pages.AdminProductPage;
+import GunTour.pages.GlobalEnv;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AddProductStep {
     AdminProductPage adminProductPage;
+    GlobalEnv globalEnv;
 
     @Given("click add product button")
     public void clickAddProductButton(){
@@ -17,12 +19,12 @@ public class AddProductStep {
     }
     @When("click close button add modal")
     public void clickCloseButtonAddModal() {
-        adminProductPage.scrollToCloseButton();
+//        adminProductPage.scrollToCloseButton();
         adminProductPage.clickCloseButton();
     }
     @Then("add product modal should closed")
     public void addProductModalShouldClosed() {
-        adminProductPage.getTableTitle();
+        assertEquals("PRICE", adminProductPage.getTableTitle());
     }
 
     @And("input product photo data")
@@ -58,21 +60,22 @@ public class AddProductStep {
     public void theProductShouldBeAddedToTable() {
         adminProductPage.clickOk();
         adminProductPage.clickCloseButton();
-        adminProductPage.getTableTitle();
+        assertEquals("PRICE", adminProductPage.getTableTitle());
     }
 
     @Then("alert message should appear {string}")
     public void alertMessageShouldAppear(String alert) {
         assertEquals(alert, adminProductPage.getAlertProductPopup());
         adminProductPage.clickOk();
-
     }
-    //    @When("click product menu")
-//    public void clickProductMenu() {
-//        adminProductPage.ClickProductButton();
-//    }
-//    @And("products table appear")
-//    public void productsTableAppear() {
-//        assertEquals("PRICE", adminProductPage.getTableTitle());
-//    }
+
+    @When("click product menu")
+    public void clickProductMenu() {
+        adminProductPage.clickProductMenu();
+    }
+
+    @And("products table appear")
+    public void productsTableAppear() {
+        assertEquals("PRICE", adminProductPage.getTableTitle());
+    }
 }

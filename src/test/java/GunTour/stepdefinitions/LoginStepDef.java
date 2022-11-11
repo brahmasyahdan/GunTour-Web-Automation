@@ -42,7 +42,7 @@ public class LoginStepDef {
         assertTrue(homePageUser.isPopUpVisible());
         assertEquals("https://guntour.vercel.app/home", homePageUser.getUrl());
         assertEquals("POPULAR", homePageUser.getProductTittle());
-        assertTrue(homePageUser.isBookingVisible());
+        assertTrue(homePageUser.isBookedNowNavbarVisible());
     }
     @Then("directed to admin page")
     public void DirectedtoAdminPage(){

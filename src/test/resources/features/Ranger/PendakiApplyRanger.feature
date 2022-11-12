@@ -1,8 +1,7 @@
 Feature: pendaki apply ranger
 
-  Background: login ranger
+  Background: login pendaki
     Given user already login
-
 
   Scenario Outline: user wanted to apply as ranger with valid data
     When user choose become ranger dropdown

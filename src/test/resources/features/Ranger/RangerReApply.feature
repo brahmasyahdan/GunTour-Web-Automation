@@ -1,6 +1,6 @@
 Feature: ranger re apply
 
-  Background:
+  Background: login ranger
     Given ranger already login
 
   Scenario Outline: user wanted to apply as ranger with valid data

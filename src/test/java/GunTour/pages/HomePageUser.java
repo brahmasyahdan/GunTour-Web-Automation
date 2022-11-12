@@ -125,7 +125,6 @@ public class HomePageUser extends PageObject {
         driver.switchTo().alert().accept();
         wait(5000);
     }
-
     public void clickDropDown(){
         driver.findElement(avatarDropDownMenu);
     }

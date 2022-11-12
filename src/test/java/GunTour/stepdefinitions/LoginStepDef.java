@@ -7,8 +7,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -19,7 +17,7 @@ public class LoginStepDef {
     AdminProductPage adminProductPage;
 
     @Given("I already on log in page")
-    public void iAlreadyOnLoginPage(){
+    public void iAlreadyOnLoginPage() {
         loginPage.open();
     }
 
@@ -45,11 +43,13 @@ public class LoginStepDef {
         assertEquals("POPULAR", homePageUser.getHeaderProduct());
         assertTrue(homePageUser.isBookedNowNavbarVisible());
     }
+
     @Then("directed to admin page")
-    public void DirectedtoAdminPage(){
+    public void DirectedtoAdminPage() {
         adminProductPage.clickOk();
         assertEquals("https://guntour.vercel.app/admin", adminProductPage.getUrl());
     }
+
     @Given("user already login")
     public void userAlreadyLogin() {
         loginPage.open();
@@ -75,12 +75,5 @@ public class LoginStepDef {
         loginPage.InputPassword("Kunti123");
         loginPage.ClickLoginButton();
         homePageUser.clickPopUpLoginSuccess();
-
-      public void wait(int wait) {
-        try {
-            sleep(wait);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

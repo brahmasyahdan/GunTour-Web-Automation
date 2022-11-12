@@ -15,8 +15,8 @@ public class LoginStepDef {
 
     LoginPage loginPage;
     HomePageUser homePageUser;
-
     AdminProductPage adminProductPage;
+
     @Given("I already on log in page")
     public void iAlreadyOnLoginPage(){
         loginPage.open();
@@ -41,7 +41,7 @@ public class LoginStepDef {
     public void shouldBeDirectedToHomePage() {
         assertTrue(homePageUser.isPopUpVisible());
         assertEquals("https://guntour.vercel.app/home", homePageUser.getUrl());
-        assertEquals("POPULAR", homePageUser.getProductTittle());
+        assertEquals("POPULAR", homePageUser.getHeaderProduct());
         assertTrue(homePageUser.isBookedNowNavbarVisible());
     }
     @Then("directed to admin page")
@@ -54,6 +54,24 @@ public class LoginStepDef {
         loginPage.open();
         loginPage.InputEmail("nyusdjaja30@gmail.com");
         loginPage.InputPassword("Araa1989");
+        loginPage.ClickLoginButton();
+        homePageUser.clickPopUpLoginSuccess();
+    }
+
+    @Given("ranger already login")
+    public void rangerAlreadyLogin() {
+        loginPage.open();
+        loginPage.InputEmail("nyusdjaja@gmail.com");
+        loginPage.InputPassword("Araa1989");
+        loginPage.ClickLoginButton();
+        homePageUser.clickPopUpLoginSuccess();
+    }
+
+    @Given("admin already login")
+    public void adminAlreadyLogin() {
+        loginPage.open();
+        loginPage.InputEmail("admin@gmail.com");
+        loginPage.InputPassword("Kunti123");
         loginPage.ClickLoginButton();
         homePageUser.clickPopUpLoginSuccess();
     }

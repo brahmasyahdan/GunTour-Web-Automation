@@ -13,7 +13,23 @@ public class ConfirmationPage extends PageObject {
 
     private final By paymentDesc=By.xpath("/html/body/div/div/div/main/section/h5");
     private final By ticketQuantity=By.xpath("/html/body/div/div/div/main/section/p[1]");
+    private final By alertSuccess= By.xpath("//*[@id=\"swal2-title\"]");
     private final By confirmButton = By.id("confirm-booking");
     private final By cancelButton = By.id("cancel-book");
-    
+
+    public void getUrl(){
+        driver.getCurrentUrl();
+    }
+    public boolean isPaymentDescriptionVisible(){
+        return driver.findElement(paymentDesc).isDisplayed();
+    }
+    public void clickConfirmButton(){
+        driver.findElement(confirmButton).click();
+    }
+    public void clickCancelButton(){
+        driver.findElement(cancelButton).click();
+    }
+    public String getConfirmationSuccessfulMessage(){
+        return driver.findElement(alertSuccess).getText();
+    }
 }

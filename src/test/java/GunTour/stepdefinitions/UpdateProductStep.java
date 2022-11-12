@@ -22,7 +22,7 @@ public class UpdateProductStep {
     }
     @Then("edit product modal should closed")
     public void editProductModalShouldClosed() {
-        adminProductPage.getTableTitle();
+        assertEquals("PRICE", adminProductPage.getTableTitle());
     }
 
     @And("input update product photo data")
@@ -49,22 +49,20 @@ public class UpdateProductStep {
         adminProductPage.inputWarning(warning);
     }
 
-    @And("click save data button modal")
-    public void clickSaveDataButtonModal() {
-        adminProductPage.clickSaveDataButton();
-    }
-
     @Then("the product should be edited")
     public void theProductShouldBeAddedToTable() {
         adminProductPage.clickOk();
         adminProductPage.clickCloseButton();
-        adminProductPage.getTableTitle();
+        assertEquals("PRICE",adminProductPage.getTableTitle());
     }
 
-//    @Then("alert message should appear {string}")
-//    public void alertMessageShouldAppear(String alert) {
-//        assertEquals(alert, adminProductPage.getAlertProductPopup());
-//        adminProductPage.clickOk();
+    @When("admin click delete button")
+    public void adminClickDeleteButton() {
+        adminProductPage.clickDeleteButton();
+    }
 
-//    }
+    @Then("the product should be deleted")
+    public void theProductShouldBeDeleted() {
+        adminProductPage.clickOk();
+    }
 }

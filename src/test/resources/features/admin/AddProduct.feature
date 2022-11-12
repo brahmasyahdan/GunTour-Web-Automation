@@ -5,8 +5,8 @@ Feature: Admin add product by functionality
     And I input password "Kunti123"
     And I click login button
     Then directed to admin page
-#    When click product menu
-#    And products table appear
+    When click product menu
+    And products table appear
 
   @adminaddproduct @positive @admin-w007
   Scenario: Verify close button in add product modal is enabled
@@ -24,6 +24,7 @@ Feature: Admin add product by functionality
     And input warning "Harap dikembalikan dalam keadaan bersih"
     And click save data button modal
     Then the product should be added to table
+#    And send productID to dynamic variable
 
   @adminaddproduct @negative @admin-w015
   Scenario: Admin add product with invalid rent price data

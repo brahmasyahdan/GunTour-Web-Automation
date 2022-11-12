@@ -1,10 +1,12 @@
-Feature: Udpdate climbers by Admin Functionality
+Feature: Update climbers by Admin Functionality
   Background: Login admin with registered account
-    Given admin input email "@gmail" and password "password"
-    And admin click login button
-    Then admin should success login
-    When admin click users menu
-    And climbers table appear
+    Given already on login page
+    And input email "admin@gmail.com"
+    And input password "Kunti123"
+    And click login button
+    Then directed to admin page
+    When click users menu
+    Then directed to users page
 
   @admineditclimbers @positive @admin-w031
   Scenario: Verify close button in edit climbers data modal is enabled

@@ -17,6 +17,8 @@ public class BookingPage extends PageObject {
     private final By dropDownEntrance = By.id("category");
     private final By dropDownRangers = By.id("categoryRanger");
     private final By dropDownPerson = By.id("categoryPerson");
+    private final By sweetAlert = By.id("swal2-title");
+    private final By yesSureConfirmAlert= By.xpath("/html/body/div[2]/div/div[6]/button[1]");
     private final By imageBookingPage= By.xpath("/html/body/div/div/div/header/img");
     private final By minusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[1]/svg/path");
     private final By plusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[2]/svg/path");
@@ -75,6 +77,9 @@ public class BookingPage extends PageObject {
     }
     public void clickBookedNowButton(){
         driver.findElement(bookedNowButton).click();
+    }
+    public String sweetAlertAppear(){
+        return driver.findElement(sweetAlert).getText();
     }
 
 }

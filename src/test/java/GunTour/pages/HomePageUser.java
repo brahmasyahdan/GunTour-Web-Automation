@@ -80,11 +80,6 @@ public class HomePageUser extends PageObject {
     public void clickOKPromptPopUpButton(){
         driver.switchTo().alert().accept();
     }
-    public void selectDropDownMenu(String menu){
-        WebElement selectElement = driver.findElement(avatarDropDownMenu);
-        Select selectObject = new Select(selectElement);
-        selectObject.selectByVisibleText(menu);
-    }
     public void clickNextImageRight(){
         driver.findElement(heroNextImageRight).click();
     }

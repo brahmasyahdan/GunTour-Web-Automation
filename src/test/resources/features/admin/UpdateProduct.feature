@@ -1,18 +1,20 @@
 Feature: Update product by Admin Functionality
   Background: Login admin with registered account
-    Given already on login page
-    And input email "admin@gmail.com"
-    And input password "Kunti123"
-    And click login button
+    Given I already on log in page
+    And I input email "admin@gmail.com"
+    And I input password "Kunti123"
+    And I click login button
     Then directed to admin page
+#    When click product menu
+#    And products table appear
 
-  @admineditproduct @positive @admin-w013
+  @admin @positive
   Scenario: Verify close button in edit product modal is enabled
     Given click edit product button
     When click close button edit modal
     Then edit product modal should closed
 
-  @admineditproduct @positive @admin-w021
+  @admin @admineditproduct @positive
   Scenario: Admin update product with valid data
     When click edit product button
     And input update product photo data
@@ -20,10 +22,10 @@ Feature: Update product by Admin Functionality
     And input update rent price "200000"
     And input update description "2 x 1.5 x 1.2 m Update"
     And input update warning "Barang mudah robek Update"
-    And click save data button modal
+    And click edit product button modal
     Then the product should be edited
 
-  @admineditproduct @positive @admin-w021
+  @admin @negative
   Scenario: Admin update product with invalid rent price data
     When click edit product button
     And input update product photo data
@@ -31,66 +33,72 @@ Feature: Update product by Admin Functionality
     And input update rent price "dua ratus update"
     And input update description "2 x 1.5 x 1.2 m Update"
     And input update warning "Barang mudah robek Update"
-    And click save data button modal
+    And click edit product button modal
     Then alert message should appear "There is an error please check again"
 
-  @admineditproduct @negative @admin-w022
+  @admin @negative
   Scenario: Admin update product without product photo data
     When click edit product button
     And input update product name "Tenda Big Size 8 orang Update"
     And input update rent price "200000"
     And input update description "2 x 1.5 x 1.2 m Update"
     And input update warning "Barang mudah robek Update"
-    And click save data button modal
+    And click edit product button modal
     Then the product should be edited
 
-  @admineditproduct @negative @admin-w023
-  Scenario: Admin update product without product name data
+  @admin @positive
+  Scenario Outline: Admin update product with incomplete data
     When click edit product button
     And input update product photo data
-    And input update rent price "200000"
-    And input update description "2 x 1.5 x 1.2 m Update"
-    And input update warning "Barang mudah robek Update"
-    And click save data button modal
+    And input update product name "<product_name>"
+    And input update rent price "<rent_price>"
+    And input update description "<description>"
+    And input update warning "<warning>"
+    And click edit product button modal
     Then the product should be edited
+    Examples:
+      |product_name|rent_price|description|warning|
+      |            |200000    |2x1.5x1m   |Dikembalikan dalam keadaan bersih|
+      |Tenda Besar |          |2x1.5x1m   |Dikembalikan dalam keadaan bersih|
+      |Tenda Besar |200000    |           |Dikembalikan dalam keadaan bersih|
+      |Tenda Besar |200000    |2x1.5x1m   |                                 |
 
-  @admineditproduct @negative @admin-w024
-  Scenario: Admin update product without rent price data
-    When click edit product button
-    And input update product photo data
-    And input update product name "Tenda Big Size 8 orang"
-    And input update description "2 x 1.5 x 1.2 m"
-    And input update warning "Barang mudah robek"
-    And click save data button modal
-    Then the product should be edited
+  @admin @positive
+  Scenario: Admin logout
+    When click logout button in admin page
+    Then should return to login page
 
-  @admineditproduct @negative @admin-w025
-  Scenario: Admin update product without description data
-    When click edit product button
-    And input update product photo data
-    And input update product name "Tenda Big Size 8 orang"
-    And input update rent price "200000"
-    And input update warning "Barang mudah robek"
-    And click save data button modal
-    Then the product should be edited
+#  @admineditproduct @negative @admin-w024
+#  Scenario: Admin update product without rent price data
+#    When click edit product button
+#    And input update product photo data
+#    And input update product name "Tenda Big Size 8 orang"
+#    And input update description "2 x 1.5 x 1.2 m"
+#    And input update warning "Barang mudah robek"
+#    And click edit product button modal
+#    Then the product should be edited
+#
+#  @admineditproduct @negative @admin-w025
+#  Scenario: Admin update product without description data
+#    When click edit product button
+#    And input update product photo data
+#    And input update product name "Tenda Big Size 8 orang"
+#    And input update rent price "200000"
+#    And input update warning "Barang mudah robek"
+#    And click edit product button modal
+#    Then the product should be edited
+#
+#  @admineditproduct @negative @admin-w026
+#  Scenario: Admin update product without warning data
+#    When click edit product button
+#    And input update product photo data
+#    And input update product name "Tenda Big Size 8 orang"
+#    And input update rent price "200000"
+#    And input update description "2 x 1.5 x 1.2 m"
+#    And click edit product button modal
+#    Then the product should be edited
 
-  @admineditproduct @negative @admin-w026
-  Scenario: Admin update product without warning data
-    When click edit product button
-    And input update product photo data
-    And input update product name "Tenda Big Size 8 orang"
-    And input update rent price "200000"
-    And input update description "2 x 1.5 x 1.2 m"
-    And click save data button modal
-    Then the product should be edited
-
-  @admindeleteproduct @positive @admin-w020
-  Scenario: Admin delete product functionality
-    When admin click delete button
-    Then the product should be deleted
-
-##  //*[@id="40"]
-##  //*[@id="68"]
-##  //*[@id="root"]/div/div/div[3]/div/div[2]/table/tbody[1]/tr/td[4]/div/button[1]/div/label
-##  //*[@id="root"]/div/div/div[3]/div/div[2]/table/tbody[2]/tr/td[4]/div/button[1]/div/label
-##  //*[@id="root"]/div/div/div[3]/div/div[2]/table/tbody[8]/tr/td[4]/div/button[1]
+  #  @admin @admindeleteproduct @positive
+#  Scenario: Admin delete product functionality
+#    When admin click delete button
+#    Then the product should be deleted

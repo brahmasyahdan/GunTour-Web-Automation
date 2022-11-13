@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.lang.Thread.sleep;
 
-@DefaultUrl("https://guntour.vercel.app/admin")
+@DefaultUrl("https://guntour.vercel.app/adminranger")
 public class AdminProductPage extends PageObject {
 
     @Managed
@@ -23,15 +23,24 @@ public class AdminProductPage extends PageObject {
     By tableTitle = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/table/thead/tr/th[3]");
     By addProductButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/label");
     By closeButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/label/div");
+    By closeButtonEditModal = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/table/tbody[1]/tr/td[4]/div/button[1]/div/div/div/label/div");
     By productPhotoElement = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[2]/div/input");
     By fieldProductName = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[3]/input");
     By fieldRentPrice = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[4]/input");
     By fieldDesc = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[5]/textarea");
     By fieldWarning = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[6]/textarea");
     By saveDataModal = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[1]/div/div/div/div[8]");
-    By alertAddProductPopup = By.id("swal2-title");
-    By editProductButton = By.id("button-edit-1");
-    By deleteProductButton = By.id("109");
+    By alertTitlePopup = By.id("swal2-title");
+    By editProductButton = By.xpath("//*[@id=\"button-edit-1\"]");
+    By fieldEditProductPhoto = By.xpath("//*[@id=\"input-photo-product\"]");
+    By fieldEditProductName = By.id("input-name-product");
+    By fieldEditRentPrice = By.id("input-rent-product");
+    By fieldEditDesc = By.id("input-desc-product");
+    By fieldEditWarning = By.id("input-note-product");
+    By editProductButtonModal = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/table/tbody[1]/tr/td[4]/div/button[1]/div/div/div/div[8]");
+    By loadMoreButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/div/button");
+    By logoutButton = By.id("button-logout-sidebar");
+//   By deleteProductButton = By.id("168");
 
     public void wait(int wait) {
         try {
@@ -46,17 +55,18 @@ public class AdminProductPage extends PageObject {
 
     public void clickProductMenu(){
         driver.findElement(productMenuButton);
+        wait(1000);
     }
     public void clickUsersMenu() {
         driver.findElement(usersMenuButton).click();
-        wait(2000);
+        wait(1000);
     }
     public void clickOk(){
         driver.findElement(clickOk).click();
         wait(1000);
     }
-    public String getTableTitle(){
-        return driver.findElement(tableTitle).getText();
+    public boolean getTableTitle(){
+        return driver.findElement(tableTitle).isDisplayed();
     }
     public void clickAddProductButton(){
         driver.findElement(addProductButton).click();
@@ -75,7 +85,7 @@ public class AdminProductPage extends PageObject {
 //        wait(1000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1000)");
-        wait(3000);
+        wait(1000);
 //        Actions act = new Actions(driver);
 //        act.sendKeys(Keys.PAGE_DOWN).build().perform();
     }
@@ -83,7 +93,10 @@ public class AdminProductPage extends PageObject {
         driver.findElement(closeButton).click();
         wait(1000);
     }
-
+    public void clickCloseButtonEditModal(){
+        driver.findElement(closeButtonEditModal).click();
+        wait(1000);
+    }
     public void inputAddProductPhoto(){
         WebElement element= getDriver().switchTo().activeElement().findElement(productPhotoElement);
         element.sendKeys(IMAGE_FOLDER+"/Tenda.jpeg");
@@ -109,24 +122,60 @@ public class AdminProductPage extends PageObject {
         driver.findElement(saveDataModal).click();
         wait(1000);
     }
-
     public String getAlertProductPopup() {
-        return driver.findElement(alertAddProductPopup).getText();
+        return driver.findElement(alertTitlePopup).getText();
     }
-
     public void clickEditProductButton() {
         driver.findElement(editProductButton).click();
         wait(1000);
     }
-    public void inputEditProductPhoto(){
-        WebElement element= getDriver().switchTo().activeElement().findElement(productPhotoElement);
+    public void editProductPhoto(){
+        WebElement element= getDriver().switchTo().activeElement().findElement(fieldEditProductPhoto);
         element.sendKeys(IMAGE_FOLDER+"/Tenda Update.jpeg");
         wait(1000);
     }
-    public void clickDeleteButton() {
-        driver.findElement(deleteProductButton).click();
+//    public void clickDeleteButton() {
+//        driver.findElement(loadMoreButton).click();
+//        wait(1000);
+//        driver.findElement(loadMoreButton).click();
+//        wait(1000);
+//        driver.findElement(loadMoreButton).click();
+//        wait(1000);
+//        driver.findElement(deleteProductButton).click();
+//        wait(1000);
+//    }
+    public void editProductName(String productName) {
+        driver.findElement(fieldEditProductName).sendKeys(productName);
         wait(1000);
     }
-
-
+    public void editRentPrice(String rentPrice) {
+        driver.findElement(fieldEditRentPrice).sendKeys(rentPrice);
+        wait(1000);
+    }
+    public void editDesc(String desc) {
+        driver.findElement(fieldEditDesc).sendKeys(desc);
+        wait(1000);
+    }
+    public void editWarning(String warning) {
+        driver.findElement(fieldEditWarning).sendKeys(warning);
+        wait(1000);
+    }
+    public void clickEditProductButtonModal() {
+        driver.findElement(editProductButtonModal).click();
+        wait(1000);
+    }
+    public String getSuccessEditPopup() {
+        return driver.findElement(alertTitlePopup).getText();
+    }
+    public void clickLoadMoreButton(){
+        driver.findElement(loadMoreButton).click();
+        wait(1000);
+        driver.findElement(loadMoreButton).click();
+        wait(1000);
+    }
+    public void clickLogout() {
+        wait(1000);
+        driver.findElement(logoutButton).click();
+        wait(1000);
+    }
 }

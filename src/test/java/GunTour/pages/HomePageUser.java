@@ -175,11 +175,9 @@ public class HomePageUser extends PageObject {
     }
     public void clickButtonBookNowProduct2(){
         driver.findElement(buttonBookNowProduct2).click();
-        wait(5000);
     }
     public void clickButtonBookNowProduct3(){
         driver.findElement(buttonBookNowProduct3).click();
-        wait(5000);
     }
     public void clickJoinCommunityButton(){
         driver.findElement(joinCommunityButton).click();

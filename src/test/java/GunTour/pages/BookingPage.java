@@ -97,8 +97,8 @@ public class BookingPage extends PageObject {
     public void clickYesSureAlert(){
         driver.findElement(yesSureConfirmAlert).click();
     }
-    public void getUrl(){
-        driver.getCurrentUrl();
+    public String getUrl(){
+       return driver.getCurrentUrl();
     }
     public void clickCancelOnConfirmAlert(){
         driver.findElement(cancelAlertConfirm).click();

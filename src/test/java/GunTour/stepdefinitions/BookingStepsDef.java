@@ -31,7 +31,8 @@ public class BookingStepsDef {
 
     @Then("I redirected to booking history page")
     public void iRedirectedToBookingHistoryPage() {
-        bookingHistory.getUrl();
+        wait(4000);
+        Assert.assertEquals("https://guntour.vercel.app/history",bookingHistory.getUrl());
     }
 
     @When("I click on booking now button")
@@ -75,7 +76,7 @@ public class BookingStepsDef {
 
     @Then("I redirected to confirmation page")
     public void iRedirectedToConfirmationPage() {
-        confirmationPage.getUrl();
+        Assert.assertEquals("https://guntour.vercel.app/confirm",confirmationPage.getUrl());
         confirmationPage.isPaymentDescriptionVisible();
     }
 
@@ -106,7 +107,7 @@ public class BookingStepsDef {
 
     @Then("I redirected to booking page")
     public void iRedirectedToBookingPage() {
-        bookingPage.getUrl();
+        Assert.assertEquals("https://guntour.vercel.app/booking",bookingPage.getUrl());
         bookingPage.isThisProductHereAreOptionalVisible();
         wait (3500);
         bookingPage.isImageBookingPageVisible();

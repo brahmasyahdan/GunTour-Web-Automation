@@ -17,8 +17,8 @@ public class ConfirmationPage extends PageObject {
     private final By confirmButton = By.id("confirm-booking");
     private final By cancelButton = By.id("cancel-book");
 
-    public void getUrl(){
-        driver.getCurrentUrl();
+    public String getUrl(){
+        return driver.getCurrentUrl();
     }
     public boolean isPaymentDescriptionVisible(){
         return driver.findElement(paymentDesc).isDisplayed();

@@ -5,9 +5,7 @@ Feature: Booking tickets
     And I input password "P4assword"
     And I click login button
     And I click pop up success message login button
-      #    When I click on avatar menu
-  #    And I click on my booking
-  #    Then I redirected to booking history page
+
   @positive @booking
   Scenario: Book ticket with a product
     When I click on book now button on selected product
@@ -177,3 +175,10 @@ Feature: Booking tickets
     Then I see pop up message "Data cannot be empty !"
     When I click OK on alert pop up
     Then I redirected to booking page
+
+  @negative @booking
+  Scenario: Book product by click on book now button twice
+    When I click on book now button on selected product
+    Then Product added to booking now with message "Added to Booking Now"
+    When I click on book now button on the same product
+    Then I see pop up message "Product are already in Booking Now!"

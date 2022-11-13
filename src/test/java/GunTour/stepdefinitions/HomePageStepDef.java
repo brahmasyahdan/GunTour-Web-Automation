@@ -89,6 +89,7 @@ public class HomePageStepDef {
 
     @When("user choose one product to book")
     public void userChooseOneProductToBook() {
+        wait(5000);
         homePageUser.clickButtonBookNowProduct();
     }
 
@@ -100,11 +101,13 @@ public class HomePageStepDef {
 
     @And("user choose a second product")
     public void userChooseASecondProduct() {
+        wait(5000);
         homePageUser.clickButtonBookNowProduct2();
     }
 
     @When("user choose a third product")
     public void userChooseAThirdProduct() {
+        wait(5000);
         homePageUser.clickButtonBookNowProduct3();
     }
 
@@ -167,5 +170,11 @@ public class HomePageStepDef {
     @When("I click on book now button on other selected product")
     public void iClickOnBookNowButtonOnOtherSelectedProduct() {
         homePageUser.clickButtonBookNowProduct3();
+    }
+
+    @When("I click on book now button on the same product")
+    public void iClickOnBookNowButtonOnTheSameProduct() {
+        wait(3000);
+        homePageUser.clickButtonBookNowProduct();
     }
 }

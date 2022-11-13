@@ -25,6 +25,7 @@ public class HomePageUser extends PageObject {
     private final By communityPicture = By.xpath("//*[@id=\"root\"]/div/div/section[3]/div/div[2]/img");
     private final By googleMap = By.cssSelector("//a[contains(text(),'View larger map')]");
     private final By loginSuccessPopUpOk = By.xpath("/html/body/div[2]/div/div[6]/button[1]");
+
     private final By messageSuccessLogin = By.id("swal2-title");
     private final By guideNavbar = By.id("guide");
     private final By aboutNavbar = By.id("about");

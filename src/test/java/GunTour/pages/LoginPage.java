@@ -16,6 +16,9 @@ public class LoginPage extends PageObject {
     private final By fieldEmail = By.id("email");
     private final By fieldPassword = By.id("password");
     private final By loginButton = By.id("sign");
+    private final By loginNotSuccessPopUp=By.xpath("/html/body/div[2]/div");
+    private final By loginWithoutEmailOrPassword=By.xpath("//*[@id=\"swal2-title\"]");
+    private final By goToRegisterPage=By.xpath("//*[@id=\"register\"]");
 
     public void wait(int wait) {
         try {
@@ -40,6 +43,15 @@ public class LoginPage extends PageObject {
         return driver.getCurrentUrl();
     }
 
+    public boolean IsPopUpLoginNotSuccessVisible(){
+        return driver.findElement(loginNotSuccessPopUp).isDisplayed();
+    }
 
+    public boolean IsPopUpLoginWithoutField(){
+        return driver.findElement(loginWithoutEmailOrPassword).isDisplayed();
+    }
 
+    public void goRegisterPageClick(){
+        driver.findElement(goToRegisterPage).click();
+    }
 }

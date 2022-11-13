@@ -3,10 +3,14 @@ package GunTour.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.Managed;
+import org.junit.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import static java.lang.Thread.sleep;
 
 @DefaultUrl("https://guntour.vercel.app/booking")
 public class BookingPage extends PageObject {
@@ -18,14 +22,23 @@ public class BookingPage extends PageObject {
     private final By dropDownRangers = By.id("categoryRanger");
     private final By dropDownPerson = By.id("categoryPerson");
     private final By sweetAlert = By.id("swal2-title");
+    private final By sweetAlertOK= By.xpath("/html/body/div[2]/div/div[6]/button[1]");
     private final By yesSureConfirmAlert= By.xpath("/html/body/div[2]/div/div[6]/button[1]");
+    private final By cancelAlertConfirm= By.xpath("/html/body/div[2]/div/div[6]/button[3]");
     private final By imageBookingPage= By.xpath("/html/body/div/div/div/header/img");
-    private final By minusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[1]/svg/path");
-    private final By plusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[2]/svg/path");
+    private final By minusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[1]");
+    private final By plusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[2]");
     private final By removeProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[2]/button");
     private final By numberProduct = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/p");
     private final By thisProductHereAreOptional= By.xpath("/html/body/div/div/div/p");
     private final By bookedNowButton =By.id("booked-now");
+    public void wait(int wait) {
+        try {
+            sleep(wait);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void inputFromDate(String date){
         driver.findElement(fromDate).sendKeys(date);
@@ -69,7 +82,7 @@ public class BookingPage extends PageObject {
     public void clickPlusButtonProduct(){
         driver.findElement(plusButtonProduct1).click();
     }
-    public String numberOfProduct(String number){
+    public String numberOfProduct(){
         return driver.findElement(numberProduct).getText();
     }
     public void clickRemoveProductButton(){
@@ -81,5 +94,25 @@ public class BookingPage extends PageObject {
     public String sweetAlertAppear(){
         return driver.findElement(sweetAlert).getText();
     }
+    public void clickYesSureAlert(){
+        driver.findElement(yesSureConfirmAlert).click();
+    }
+    public void getUrl(){
+        driver.getCurrentUrl();
+    }
+    public void clickCancelOnConfirmAlert(){
+        driver.findElement(cancelAlertConfirm).click();
+    }
+    public String removeProductSuccess(){
+        return driver.findElement(sweetAlert).getText();
+    }
+    public void clickRemoveProductSuccess(){
+        driver.findElement(sweetAlertOK).click();
+    }
+    public void scrollSmooth(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,250)", "");
+    }
+
 
 }

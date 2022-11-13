@@ -45,6 +45,8 @@ public class HomePageUser extends PageObject {
     private final By becomeRangerDropDown = By.id("become-ranger-dropdown");
     private final By logOutDropDown = By.id("logout-dropdown");
     private final By successBookingProductPopUp = By.id("swal2-title");
+    private final By popUpSuccessAddProduct = By.id("swal2-title");
+    private final By myBooking =By.xpath("//*[@id=\"mybooking-dropdown\"]/p");
 
     public String isSuccessBookingProductPopUpDisplayed(){
         return driver.findElement(successBookingProductPopUp).getText();
@@ -117,7 +119,7 @@ public class HomePageUser extends PageObject {
         wait(2000);
     }
     public String messageLoginSuccess(){
-       return driver.findElement(messageSuccessLogin).getText();
+        return driver.findElement(messageSuccessLogin).getText();
     }
     public String messagePrompPopUp(){
         return driver.switchTo().alert().getText();
@@ -142,6 +144,7 @@ public class HomePageUser extends PageObject {
         driver.findElement(aboutNavbar).click();
     }
     public void clickBookedNowNavabr(){
+        wait(3500);
         driver.findElement(bookedNowNavbar).click();
     }
     public void clickRightArrowProduct(){
@@ -166,11 +169,9 @@ public class HomePageUser extends PageObject {
     }
     public void clickImageToRedirectDetailPage3(){
         driver.findElement(imageDetailProduct3).click();
-        wait(5000);
     }
     public void clickButtonBookNowProduct(){
         driver.findElement(buttonBookNowProduct1).click();
-        wait(5000);
     }
     public void clickButtonBookNowProduct2(){
         driver.findElement(buttonBookNowProduct2).click();
@@ -183,5 +184,16 @@ public class HomePageUser extends PageObject {
     public void clickJoinCommunityButton(){
         driver.findElement(joinCommunityButton).click();
         wait(5000);
+    }
+
+    public void clickDropDownMenu(){
+        wait(5000);
+        driver.findElement(avatarDropDownMenu).click();
+    }
+    public void clickMyBooking(){
+        driver.findElement(myBooking).click();
+    }
+    public String getSuccessAddProduct(){
+        return driver.findElement(popUpSuccessAddProduct).getText();
     }
 }

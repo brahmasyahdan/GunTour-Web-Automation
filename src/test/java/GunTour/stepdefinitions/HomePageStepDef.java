@@ -144,4 +144,28 @@ public class HomePageStepDef {
     public void userAnonymClickThirdProductBookNowButton() {
         homePageAnonym.clickButtonBookNowProduct3();
     }
+    @When("I click on book now button on selected product")
+    public void iClickOnBookNowButtonOnSelectedProduct() {
+        homePageUser.clickButtonBookNowProduct();
+    }
+
+    @Then("Product added to booking now with message {string}")
+    public void productAddedToBookingNow(String message) {
+        Assert.assertEquals(message,homePageUser.getSuccessAddProduct());
+    }
+
+    @When("I click on avatar menu")
+    public void iClickOnAvatarMenu() {
+        homePageUser.clickDropDownMenu();
+    }
+
+    @And("I click on my booking")
+    public void iClickOnMyBooking() {
+        homePageUser.clickMyBooking();
+    }
+
+    @When("I click on book now button on other selected product")
+    public void iClickOnBookNowButtonOnOtherSelectedProduct() {
+        homePageUser.clickButtonBookNowProduct3();
+    }
 }

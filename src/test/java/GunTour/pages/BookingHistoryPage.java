@@ -15,17 +15,7 @@ public class BookingHistoryPage extends PageObject {
     private final By buttonPayNow= By.xpath("/html/body/div/div/div/section[1]/div/div/a/button");
     //
     private final By popUpSuccessAddProduct = By.id("swal2-title");
-//    private final By myBooking =By.xpath("//*[@id=\"mybooking-dropdown\"]/p");
-//    public void clickDropDownMenu(){
-//        wait(5000);
-//        driver.findElement(avatarDropDownMenu).click();
-//    }
-//    public void clickMyBooking(){
-//        driver.findElement(myBooking).click();
-//    }
-//    public String getSuccessAddProduct(){
-//        return driver.findElement(popUpSuccessAddProduct).getText();
-//    }
-//    private final By popUpSuccessAddProduct = By.id("swal2-title");
-//    private final By myBooking =By.xpath("//*[@id=\"mybooking-dropdown\"]/p");
+    public String getUrl(){
+        return driver.getCurrentUrl();
+    }
 }

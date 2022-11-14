@@ -42,9 +42,9 @@ public class OrderHistoryStepDef {
 
     @When("I click yes delete it on alert pop up")
     public void iClickYesDeleteItOnAlertPopUp() {
-        wait(2000);
+        wait(1000);
         bookingHistory.clickYesDeleteIt();
-        wait(2000);
+        wait(500);
     }
 
     @And("I already create a booking plan")
@@ -150,7 +150,7 @@ public class OrderHistoryStepDef {
     @When("I click back to website merchant")
     public void iClickBackToWebsiteMerchant() {
         brimoPage.clickBackToWebsiteMerchant();
-        wait(10000);
+        wait(5000);
     }
 
     @And("I click Bayar button with BRImo")

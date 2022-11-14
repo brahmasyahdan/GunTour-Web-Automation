@@ -82,6 +82,7 @@ public class BookingStepsDef {
 
     @And("I see pop up confirmation {string}")
     public void iSeePopUpConfirmation(String alert) {
+        wait(1000);
         Assert.assertEquals(alert,bookingPage.sweetAlertAppear());
     }
 

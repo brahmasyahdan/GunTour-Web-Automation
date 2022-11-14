@@ -20,6 +20,7 @@ public class LoginPage extends PageObject {
     private final By loginWithoutEmailOrPassword=By.xpath("//*[@id=\"swal2-title\"]");
     private final By goToRegisterPage=By.xpath("//*[@id=\"register\"]");
 
+
     public void wait(int wait) {
         try {
             sleep(wait);
@@ -54,4 +55,5 @@ public class LoginPage extends PageObject {
     public void goRegisterPageClick(){
         driver.findElement(goToRegisterPage).click();
     }
+
 }

@@ -69,8 +69,8 @@ public class AddProductStep {
     public void productsTableAppear() {
         assertTrue("PRICE", adminProductPage.getTableTitle());
     }
-    @Given("click load more button")
-    public void clickLoadMoreButton() {
-        adminProductPage.clickLoadMoreButton();
+    @Given("click next page button")
+    public void clickNextPageButton() {
+        adminProductPage.clickNextPageButton();
     }
 }

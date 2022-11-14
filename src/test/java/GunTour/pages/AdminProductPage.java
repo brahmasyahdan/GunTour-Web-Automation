@@ -38,7 +38,7 @@ public class AdminProductPage extends PageObject {
     By fieldEditDesc = By.id("input-desc-product");
     By fieldEditWarning = By.id("input-note-product");
     By editProductButtonModal = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/table/tbody[1]/tr/td[4]/div/button[1]/div/div/div/div[8]");
-    By loadMoreButton = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div/div[2]/div/button");
+    By nextPageButton = By.xpath("//*[@id=\"root\"]/div[1]/div/div[3]/div/div[2]/div/button[2]");
     By logoutButton = By.id("button-logout-sidebar");
 //   By deleteProductButton = By.id("168");
 
@@ -99,7 +99,7 @@ public class AdminProductPage extends PageObject {
     }
     public void inputAddProductPhoto(){
         WebElement element= getDriver().switchTo().activeElement().findElement(productPhotoElement);
-        element.sendKeys(IMAGE_FOLDER+"/Tenda.jpeg");
+        element.sendKeys(IMAGE_FOLDER+"/Tenda Big Size.jpg");
         wait(1000);
     }
     public void inputProductName(String productName) {
@@ -167,10 +167,10 @@ public class AdminProductPage extends PageObject {
     public String getSuccessEditPopup() {
         return driver.findElement(alertTitlePopup).getText();
     }
-    public void clickLoadMoreButton(){
-        driver.findElement(loadMoreButton).click();
+    public void clickNextPageButton(){
+        driver.findElement(nextPageButton).click();
         wait(1000);
-        driver.findElement(loadMoreButton).click();
+        driver.findElement(nextPageButton).click();
         wait(1000);
     }
     public void clickLogout() {

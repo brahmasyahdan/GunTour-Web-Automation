@@ -13,7 +13,7 @@ Feature: Admin add product by functionality
     Given click add product button
     When click close button add modal
     Then add product modal should closed
-    Given click load more button
+    Given click next page button
 
   @admin @adminaddproduct @positive
   Scenario Outline: Admin add product with valid data

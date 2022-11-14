@@ -24,8 +24,7 @@ Feature: login
     When I input email "admin@gmail.com"
     And I input password "Kunti123"
     And I click login button
-    Then Should be directed to Admin Page
-
+    Then directed to admin page
 
   Scenario: login with registered valid email & invalid password
     Given I already on log in page

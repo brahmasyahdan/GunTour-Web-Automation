@@ -20,7 +20,7 @@ Feature: Payment
     When I click on delete button
     Then I see pop up confirmation "Do you want to Delete ?"
     When I click yes delete it on alert pop up
-    Then I see pop up confirmation "Deleted!"
+    Then I see pop up message "Delete Success!"
 
   @positive @bookingHistory
   Scenario: Validate Pay Now button functionality with BCA KlikPay
@@ -64,4 +64,22 @@ Feature: Payment
     When I click on delete button
     Then I see pop up confirmation "Do you want to Delete ?"
     When I click yes delete it on alert pop up
-    Then I see pop up confirmation "Deleted!"
+    Then I see pop up message "Delete Success!"
+
+  @positive @bookingHistory
+  Scenario: Verify cancel to delete booking functionality
+    When I already create a booking plan
+    And I see status booking is "unpaid"
+    When I click on Pay Now button
+    Then I redirected to midtrans
+    And I select payment method with BRImo
+    And I click pay now button with BRImo
+    And I input user BRImo as "testuser00"
+    And I click Bayar button with BRImo
+    Then I see transaction with brimo is success
+    When I click back to website merchant
+    Then I redirected to booking history with status booking is "settlement"
+    When I click on delete button
+    Then I see pop up confirmation "Do you want to Delete ?"
+    When I click cancel on alert pop up
+    Then I redirected to booking history with status booking is "settlement"

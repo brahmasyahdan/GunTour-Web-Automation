@@ -26,10 +26,11 @@ public class BookingPage extends PageObject {
     private final By yesSureConfirmAlert= By.xpath("/html/body/div[2]/div/div[6]/button[1]");
     private final By cancelAlertConfirm= By.xpath("/html/body/div[2]/div/div[6]/button[3]");
     private final By imageBookingPage= By.xpath("/html/body/div/div/div/header/img");
-    private final By minusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[1]");
-    private final By plusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/button[2]");
-    private final By removeProduct1 = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[2]/button");
-    private final By numberProduct = By.xpath("/html/body/div/div/div/section/div/section/div/div[2]/div[1]/div/p");
+    private final By minusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/main/article/section/button[1]");
+    private final By plusButtonProduct1 = By.xpath("/html/body/div/div/div/section/div/main/article/section/button[2]");
+
+    private final By removeProduct1 = By.xpath("/html/body/div/div/div/section/div/main/section/button");
+    private final By numberProduct = By.xpath("/html/body/div/div/div/section/div/main/article/section/p");
     private final By thisProductHereAreOptional= By.xpath("/html/body/div/div/div/p");
     private final By bookedNowButton =By.id("booked-now");
     public void wait(int wait) {

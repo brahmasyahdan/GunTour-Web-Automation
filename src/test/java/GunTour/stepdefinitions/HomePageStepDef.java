@@ -149,6 +149,7 @@ public class HomePageStepDef {
     }
     @When("I click on book now button on selected product")
     public void iClickOnBookNowButtonOnSelectedProduct() {
+        wait(3000);
         homePageUser.clickButtonBookNowProduct();
     }
 

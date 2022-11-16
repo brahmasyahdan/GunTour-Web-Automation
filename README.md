@@ -44,10 +44,10 @@
 ## Documentation
 - [Manual Web Testing Documentation](https://docs.google.com/spreadsheets/d/1G9qdpQc9Fcxp0PGieqAYl4saj4uKWydXyCT8o_vmvcs/edit?usp=sharing)
 
-## Screenshoot Web Manual Testing
---
-## Screenshoot Web Automation Testing
---
+## Reports
+
+![report Web](https://user-images.githubusercontent.com/109534135/202137430-64c214a1-0715-4873-98d9-0a71441d6853.png)
+
 
 ## Language and Tools
 ![IntellijIDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
